@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://dn0knjqntniar"]
+[gd_scene load_steps=7 format=4 uid="uid://dn0knjqntniar"]
 
 [ext_resource type="Texture2D" uid="uid://xky0pi5esilp" path="res://graphicks/tileset.png" id="2_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://bpqm1brcn3gfi" path="res://player.tscn" id="2_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://pymfp5g1bff2" path="res://jump_boost.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://h6maipphebjj" path="res://spikes.tscn" id="4_ppyta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppyta"]
 texture = ExtResource("2_6uqi0")
@@ -13,7 +14,7 @@ texture = ExtResource("2_6uqi0")
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -2.8430748, 8, -3.0468063, 8, 0.90146255, -8, 0.83211946)
 
 [sub_resource type="TileSet" id="TileSet_ykrsh"]
 physics_layer_0/collision_layer = 1
@@ -25,8 +26,11 @@ sources/0 = SubResource("TileSetAtlasSource_ppyta")
 position = Vector2(153, -133)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAD///7/AAAAAAEAAAD///3/AAAAAAEAAAD///z/AAAAAAEAAAARAP7/AAAAAAEAAAARAP3/AAAAAAEAAAARAPz/AAAAAAEAAAD///v/AAAAAAEAAAD///r/AAAAAAEAAAD///n/AAAAAAEAAAD///j/AAAAAAEAAAD///f/AAAAAAEAAAD///b/AAAAAAEAAAD///X/AAAAAAEAAAD///T/AAAAAAEAAAD///P/AAAAAAEAAAD///L/AAAAAAEAAAD///H/AAAAAAEAAAD///D/AAAAAAEAAAD//+//AAAAAAEAAAD//+7/AAAAAAEAAAD//+3/AAAAAAEAAAD//+z/AAAAAAEAAAD//+v/AAAAAAEAAAD//+r/AAAAAAEAAAD//+n/AAAAAAEAAAD//+j/AAAAAAEAAAD//+f/AAAAAAEAAAD//+b/AAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAD///7/AAAAAAEAAAD///3/AAAAAAEAAAD///z/AAAAAAEAAAARAP7/AAAAAAEAAAARAP3/AAAAAAEAAAARAPz/AAAAAAEAAAD///v/AAAAAAEAAAD///r/AAAAAAEAAAD///n/AAAAAAEAAAD///j/AAAAAAEAAAD///f/AAAAAAEAAAD///b/AAAAAAEAAAD///X/AAAAAAEAAAD///T/AAAAAAEAAAD///P/AAAAAAEAAAD///L/AAAAAAEAAAD///H/AAAAAAEAAAD///D/AAAAAAEAAAAAAPv/AAABAAAAAAACAPz/AAAAAAEAAAACAPv/AAAAAAEAAAACAPr/AAAAAAEAAAACAPn/AAAAAAEAAAACAPj/AAAAAAEAAAACAPf/AAAAAAEAAAACAPb/AAAAAAEAAAACAPX/AAAAAAEAAAACAPT/AAAAAAEAAAACAPP/AAAAAAEAAAACAPL/AAAAAAEAAAABAPj/AAABAAAAAAAAAPT/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_ykrsh")
 
 [node name="Jump boost" parent="." instance=ExtResource("3_6uqi0")]
 position = Vector2(92, -30)
+
+[node name="Spikes" parent="." instance=ExtResource("4_ppyta")]
+position = Vector2(224, -16)
