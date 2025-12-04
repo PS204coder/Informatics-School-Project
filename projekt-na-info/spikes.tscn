@@ -18,7 +18,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ds4fp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_688ft"]
-size = Vector2(32, 4)
+size = Vector2(20, 4)
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource("1_nrdsm")

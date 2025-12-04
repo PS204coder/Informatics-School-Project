@@ -65,6 +65,7 @@ func _process(delta: float) -> void:
 		gravity_changer = 1
 
 	if Global.player_died == true:
+		velocity = Vector2(0,0)
 		animations.play("die")
 		$Camera2D.zoom = Vector2(move_toward($Camera2D.zoom.x, 10, 1),move_toward($Camera2D.zoom.y, 10, 1))
 	

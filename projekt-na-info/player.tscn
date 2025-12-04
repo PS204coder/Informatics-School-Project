@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bpqm1brcn3gfi"]
+[gd_scene load_steps=30 format=3 uid="uid://bpqm1brcn3gfi"]
 
 [ext_resource type="Script" uid="uid://0gy63ndhatm7" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://dw26pxdec3lep" path="res://graphicks/slime_idle_001.png" id="2_i3pqv"]
@@ -137,9 +137,6 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
-size = Vector2(14, 8)
-
 [sub_resource type="LabelSettings" id="LabelSettings_qtqh7"]
 font = ExtResource("26_7hik5")
 font_size = 80
@@ -152,10 +149,11 @@ script = ExtResource("1_i3pqv")
 
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"die"
+animation = &"idle"
+frame_progress = 0.9718734
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2hs0m")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(5, 4, -5, 4, -7, 2, -7, -3, -6, -4, 6, -4, 7, -3, 7, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5.5, 5.5)
