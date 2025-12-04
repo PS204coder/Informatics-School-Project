@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
+	Global.player_died = true

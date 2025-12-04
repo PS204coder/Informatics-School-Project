@@ -1,24 +1,66 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpqm1brcn3gfi"]
+[gd_scene load_steps=31 format=3 uid="uid://bpqm1brcn3gfi"]
 
 [ext_resource type="Script" uid="uid://0gy63ndhatm7" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://dw26pxdec3lep" path="res://graphicks/slime_idle_001.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://cxd42q3wmvsyu" path="res://graphicks/slime_die_001.png" id="2_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://i6vvx5qvifm2" path="res://graphicks/slime_die_002.png" id="3_7hik5"]
 [ext_resource type="Texture2D" uid="uid://xjmgcc2cwrew" path="res://graphicks/slime_idle_002.png" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bd4hufd0otq65" path="res://graphicks/slime_jump_001.png" id="4_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://dc0l0nfcylx54" path="res://graphicks/slime_die_003.png" id="4_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://dk25aaaja1vgm" path="res://graphicks/slime_walk_left_001.png" id="4_sweqy"]
 [ext_resource type="Texture2D" uid="uid://bo8jh847d3a4f" path="res://graphicks/slime_walk_left_002.png" id="5_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://1qsshylx10xp" path="res://graphicks/slime_die_004.png" id="5_2wuci"]
 [ext_resource type="Texture2D" uid="uid://bf6mplioma5xs" path="res://graphicks/slime_jump_002.png" id="5_nvl01"]
 [ext_resource type="Texture2D" uid="uid://db7v8dpftrifl" path="res://graphicks/slime_walk_right_001pngf1.png" id="6_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://dcwopo4g0fxon" path="res://graphicks/slime_die_005.png" id="6_iruf7"]
 [ext_resource type="Texture2D" uid="uid://d2bcj0w3rqo3" path="res://graphicks/slime_jump_003.png" id="6_ivps1"]
 [ext_resource type="Texture2D" uid="uid://ctlpkxu4jsaff" path="res://graphicks/slime_jump_004.png" id="6_urp6f"]
 [ext_resource type="Texture2D" uid="uid://cvlhi02srj4dd" path="res://graphicks/slime_walk_right_001pngf2.png" id="7_dw050"]
+[ext_resource type="Texture2D" uid="uid://cxfgxthnwcb5t" path="res://graphicks/slime_die_006.png" id="7_j5n4i"]
+[ext_resource type="Texture2D" uid="uid://die27qwx0ysfd" path="res://graphicks/slime_die_007.png" id="8_634y6"]
+[ext_resource type="Texture2D" uid="uid://dgq4h26sfi81h" path="res://graphicks/slime_die_008.png" id="9_efrwb"]
+[ext_resource type="Texture2D" uid="uid://d1c6ormo4jlsc" path="res://graphicks/slime_die_009.png" id="10_hiqhm"]
 [ext_resource type="Script" uid="uid://by7w3pkmrbfnk" path="res://camera_2d.gd" id="11_nvl01"]
 [ext_resource type="Texture2D" uid="uid://cxo850mwusfvg" path="res://graphicks/slime_on_wall_left_001.png" id="12_u1c27"]
 [ext_resource type="Texture2D" uid="uid://cr3gpq3jjv5sq" path="res://graphicks/slime_on_wall_left_002.png" id="13_op7ga"]
 [ext_resource type="Texture2D" uid="uid://csiurmxfpef4m" path="res://graphicks/slime_on_wall_right_001.png" id="14_q13i1"]
 [ext_resource type="Texture2D" uid="uid://b8bf3f0nbrowc" path="res://graphicks/slime_on_wall_right_002.png" id="15_pylmc"]
+[ext_resource type="FontFile" uid="uid://cvbyk544vpjjm" path="res://Reboot.ttf" id="26_7hik5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": ExtResource("2_jm5j8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("3_7hik5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qtqh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2wuci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_iruf7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j5n4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_634y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_efrwb")
+}, {
+"duration": 1.1,
+"texture": ExtResource("10_hiqhm")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_i3pqv")
@@ -98,6 +140,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hs0m"]
 size = Vector2(14, 8)
 
+[sub_resource type="LabelSettings" id="LabelSettings_qtqh7"]
+font = ExtResource("26_7hik5")
+font_size = 80
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1c27"]
 size = Vector2(0.375, 2)
 
@@ -106,7 +152,7 @@ script = ExtResource("1_i3pqv")
 
 [node name="animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"wall_right"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2hs0m")
@@ -118,6 +164,15 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 script = ExtResource("11_nvl01")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 1094.0
+offset_top = 17.0
+offset_right = 1144.0
+offset_bottom = 86.0
+label_settings = SubResource("LabelSettings_qtqh7")
 
 [node name="Wall_checker_right" type="Area2D" parent="."]
 
@@ -131,14 +186,12 @@ shape = SubResource("RectangleShape2D_u1c27")
 position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_u1c27")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="Timer" type="Timer" parent="Label"]
-wait_time = 2.0
-
+[connection signal="animation_finished" from="animations" to="." method="_on_animations_animation_finished"]
 [connection signal="body_entered" from="Wall_checker_right" to="." method="_on_wall_checker_right_body_entered"]
 [connection signal="body_exited" from="Wall_checker_right" to="." method="_on_wall_checker_right_body_exited"]
 [connection signal="body_entered" from="Wall_checker_left" to="." method="_on_wall_checker_left_body_entered"]
 [connection signal="body_exited" from="Wall_checker_left" to="." method="_on_wall_checker_left_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

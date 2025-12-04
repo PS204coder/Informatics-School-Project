@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmhjdfr5axrhu"]
+
+[ext_resource type="Script" uid="uid://bwies783aql5h" path="res://pathfinding_thingi.gd" id="1_veq8r"]
+[ext_resource type="Texture2D" uid="uid://q7ekcg30wtx3" path="res://graphicks/spear_001.png" id="2_veq8r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veq8r"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybpvf"]
+radius = 7.0
+
+[node name="Pathfinding thingi" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_veq8r")
+
+[node name="Spear001" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("2_veq8r")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_veq8r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ybpvf")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
