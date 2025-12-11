@@ -1,0 +1,117 @@
+[gd_scene load_steps=23 format=3 uid="uid://xn7q5t0x1ri4"]
+
+[ext_resource type="Script" uid="uid://i2ify2rq00vb" path="res://log.gd" id="1_f5jld"]
+[ext_resource type="Texture2D" uid="uid://bld4gv7qgxcim" path="res://graphicks/log_spin_001.png" id="2_b3n81"]
+[ext_resource type="Texture2D" uid="uid://c0yqh6q1252e7" path="res://graphicks/log_spin_002.png" id="3_1fixx"]
+[ext_resource type="Texture2D" uid="uid://v7rge2eqsuf2" path="res://graphicks/log_spin_003.png" id="4_hetu1"]
+[ext_resource type="Texture2D" uid="uid://c6qncr55uame5" path="res://graphicks/log_spin_004.png" id="5_b43qg"]
+[ext_resource type="Texture2D" uid="uid://ddf82ctjhtglj" path="res://graphicks/log_spin_005.png" id="6_oow7f"]
+[ext_resource type="Texture2D" uid="uid://c5ovul5dby57c" path="res://graphicks/log_spin_006.png" id="7_wunsm"]
+[ext_resource type="Texture2D" uid="uid://bjv2ad0rnu3uu" path="res://graphicks/log_spin_007.png" id="8_bw71s"]
+[ext_resource type="Texture2D" uid="uid://cef2in6hclmym" path="res://graphicks/log_spin_008.png" id="9_58wyn"]
+[ext_resource type="Texture2D" uid="uid://c77fni5qig2gq" path="res://graphicks/log_spin_009.png" id="10_eoi35"]
+[ext_resource type="Texture2D" uid="uid://clcous2nth4c4" path="res://graphicks/log_spin_010.png" id="11_equp6"]
+[ext_resource type="Texture2D" uid="uid://cx6stg4btd1g6" path="res://graphicks/log_spin_011.png" id="12_t0ni4"]
+[ext_resource type="Texture2D" uid="uid://bho27ya55fw47" path="res://graphicks/log_spin_012.png" id="13_0on24"]
+[ext_resource type="Texture2D" uid="uid://dn4nsnwknov1g" path="res://graphicks/log_spin_013.png" id="14_ogj4n"]
+[ext_resource type="Texture2D" uid="uid://dubr3l32bo5jy" path="res://graphicks/log_spin_014.png" id="15_361bu"]
+[ext_resource type="Texture2D" uid="uid://bu4kwxlja1hp2" path="res://graphicks/log_spin_015.png" id="16_8vaij"]
+[ext_resource type="Texture2D" uid="uid://b6w88slmfnl4v" path="res://graphicks/log_spin_016.png" id="17_deg6e"]
+[ext_resource type="Texture2D" uid="uid://o2hlfuud6p3c" path="res://graphicks/log_spin_017.png" id="18_7ikj5"]
+[ext_resource type="Texture2D" uid="uid://4bd2b7tdp2cl" path="res://graphicks/log_spin_018.png" id="19_08t52"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_roy7y"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_b3n81")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_1fixx")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_hetu1")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_b43qg")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_oow7f")
+}],
+"loop": false,
+"name": &"spin",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wunsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bw71s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_58wyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eoi35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_equp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t0ni4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0on24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ogj4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_361bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_8vaij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_deg6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7ikj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_08t52")
+}],
+"loop": false,
+"name": &"spin_end",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmsm3"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f5jld"]
+radius = 8.0
+height = 18.0
+
+[node name="Log" type="RigidBody2D"]
+z_index = -1
+gravity_scale = 0.5
+script = ExtResource("1_f5jld")
+direction_of_spin = -1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_roy7y")
+animation = &"spin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hmsm3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_f5jld")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

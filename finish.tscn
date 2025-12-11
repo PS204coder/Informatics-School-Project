@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://cb11gvmpxysnp"]
+
+[ext_resource type="Script" uid="uid://blhvdicfh27xb" path="res://finish.gd" id="1_o14cw"]
+[ext_resource type="Texture2D" uid="uid://utg28owuq0p0" path="res://graphicks/finish_001.png" id="2_j16b8"]
+[ext_resource type="Texture2D" uid="uid://co4ovfv1vu8js" path="res://graphicks/finish_003.png" id="4_424os"]
+[ext_resource type="Texture2D" uid="uid://ygd1f2wgw05x" path="res://graphicks/finish_004.png" id="5_k1tgu"]
+[ext_resource type="Texture2D" uid="uid://bigppb0ofbks3" path="res://graphicks/finish_005.png" id="6_aeglf"]
+[ext_resource type="Texture2D" uid="uid://qpbu1mbrok18" path="res://graphicks/finish_006.png" id="7_5t5x4"]
+[ext_resource type="Texture2D" uid="uid://pw65u6durfc1" path="res://graphicks/finish_007.png" id="8_10s8j"]
+[ext_resource type="Texture2D" uid="uid://co1mku6su41so" path="res://graphicks/finish_008.png" id="9_gin24"]
+[ext_resource type="Texture2D" uid="uid://cfbq6uxwmrjm3" path="res://graphicks/finish_009.png" id="10_aropp"]
+[ext_resource type="Texture2D" uid="uid://dkyl8rwy350lf" path="res://graphicks/finish_010.png" id="11_m34rv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_goijn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j16b8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_424os")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k1tgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aeglf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5t5x4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_10s8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gin24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_aropp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m34rv")
+}],
+"loop": false,
+"name": &"finish",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4cds"]
+size = Vector2(14, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m2ul"]
+size = Vector2(14, 13)
+
+[node name="Finish" type="Node2D"]
+script = ExtResource("1_o14cw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_goijn")
+animation = &"finish"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_f4cds")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2m2ul")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
